@@ -288,19 +288,19 @@ function analyze() {
 
   var prompt = 'Sen YOUNOCARE markasinin dermatoloji AI asistanisin. Bu cilt fotografini analiz et. ' + CAT + ' SADECE asagidaki JSON formatinda yanitla, baska hicbir sey yazma, markdown veya kod blogu kullanma: {"cilt_skoru":75,"cilt_tipi":"Karma","tip_aciklama":"karma yaglanma egilimli","skor_seviye":"Orta","sorunlar":[{"isim":"Akne","siddet":"Hafif","renk":"#E24B4A"},{"isim":"Gozenek","siddet":"Orta","renk":"#1D9E75"}],"urunler":[{"isim":"Niacinamide C Vitamini Yuz Temizleme Kopugu","kategori":"Kopuk","neden":"akne ve gozenek icin ideal"},{"isim":"Azelaik Asit Tonik","kategori":"Tonik","neden":"gozenek sikilastirici etkili"},{"isim":"%10 C Vitamini Serum","kategori":"Serum","neden":"leke ve ton esitleme icin"}],"genel_tavsiye":"Sabah temizleyici ve tonik kullanin. Aksam retinol serum onerilir."} Bu bir ornek, gercek analizi yap ve gercek degerleri doldur.';
 
-  var OPENROUTER_KEY = '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';
+  var GROQ_KEY = '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';
 
   // Base64'ü data URL formatına çevir
   var imageUrl = 'data:' + imgMime + ';base64,' + b64;
 
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
+  fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + OPENROUTER_KEY
+      'Authorization': 'Bearer ' + GROQ_KEY
     },
     body: JSON.stringify({
-      model: 'meta-llama/llama-3.2-11b-vision-instruct',
+      model: 'meta-llama/llama-4-scout-17b-16e-instruct',
       messages: [{
         role: 'user',
         content: [
