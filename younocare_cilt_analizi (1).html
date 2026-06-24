@@ -300,7 +300,7 @@ function analyze() {
       'Authorization': 'Bearer ' + OPENROUTER_KEY
     },
     body: JSON.stringify({
-      model: 'google/gemini-2.0-flash-exp:free',
+      model: 'meta-llama/llama-3.2-11b-vision-instruct',
       messages: [{
         role: 'user',
         content: [
